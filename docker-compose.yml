@@ -14,11 +14,11 @@ services:
       VIRTUAL_NETWORK: proxy
       LETSENCRYPT_HOST: papasi.io
       LETSENCRYPT_EMAIL: admin@papasi.io
-      ASPNETCORE_URLS: https://+:5000
+      ASPNETCORE_URLS: http://+:5000
       Logging__LogLevel__Default: Debug
     restart: unless-stopped
-    ports:
-      - "5000:5000"
+    #ports:
+      #- "5000:5000"
     networks:
       - proxy
 networks:
