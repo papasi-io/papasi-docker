@@ -13,7 +13,6 @@ services:
     image: papasi/papasi-io:0.0.2
     mem_limit: 1024m
     cpus: 0.200
-    command: ["--password=SA-PASS"]
     environment:
       VIRTUAL_HOST: papasi.io
       VIRTUAL_PORT: 5000
@@ -23,6 +22,7 @@ services:
       LETSENCRYPT_EMAIL: admin@papasi.io
       ASPNETCORE_URLS: http://+:5000
       Logging__LogLevel__Default: Debug
+      ConnectionStrings:DefaultConnection: "Data Source=.;Initial Catalog=papasi;User Id=sa;Password=M123@321#20r;TrustServerCertificate=True;"
     restart: unless-stopped
     depends_on:
        - database
@@ -38,7 +38,7 @@ services:
     mem_limit: 2048m
     cpus: 0.500
     environment:
-      SA_PASSWORD: "SA-PASS"
+      SA_PASSWORD: "M123@321#20r"
       ACCEPT_EULA: "Y"
     restart: unless-stopped
     ports:
