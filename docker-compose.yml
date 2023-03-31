@@ -1,10 +1,16 @@
 version: "2.4"
 
+volumes:
+
+  papasi:
+    name: papasi
+  database:
+    name: papasi-database
 services:
   
   papasi:
     container_name: papasi
-    image: papasi/papasi-io:0.0.1
+    image: papasi/papasi-io:0.0.2
     mem_limit: 1024m
     cpus: 0.200
     environment:
@@ -20,8 +26,27 @@ services:
     #ports:
       #- "5000:5000"
     networks:
+      - papasinetwork
       - proxy
+
+  database:
+    container_name: papasi-database
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    mem_limit: 2048m
+    cpus: 0.500
+    environment:
+      ACCEPT_EULA: "Y"
+    restart: unless-stopped
+    volumes:
+      - papasi:/var/opt/mssql
+    networks:
+      - papasinetwork
+
+
 networks:
+  papasinetwork:
+    external: false
+    name: papasinetwork
   proxy:
     external: true
     name: proxy
