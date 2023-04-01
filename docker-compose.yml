@@ -18,8 +18,8 @@ services:
       VIRTUAL_PORT: 5000
       VIRTUAL_PROTO: http
       VIRTUAL_NETWORK: proxy
-      LETSENCRYPT_HOST: localhost
-      LETSENCRYPT_EMAIL: admin@papasi.io
+      LETSENCRYPT_HOST: YOURDOMAIN
+      LETSENCRYPT_EMAIL: admin@YOURDOMAIN.io
       ASPNETCORE_URLS: http://+:5000
       Logging__LogLevel__Default: Debug
       ConnectionStrings__DefaultConnection: "Server=database,1433;User Id=SA;Password=YOUR-PASSWORD;Encrypt=false"
